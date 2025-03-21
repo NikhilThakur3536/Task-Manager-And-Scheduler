@@ -9,14 +9,7 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {
-      fontFamily: {
-        k2d: "var(--font-k2d)", 
-        montserrat: "var(--font-montserrat)", 
-        poppins: "var(--font-poppins)", 
-        muli: "var(--font-muli)",  
-      },
-    },
+    extend: {},
   },
   plugins: [],
 }
