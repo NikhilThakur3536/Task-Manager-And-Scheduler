@@ -7,9 +7,8 @@ import { RolesData } from "../data/RolesData";
 export const RoleSelection = () => {
     const [selectedRole, setSelectedRole] = useState<string | null>(null);
 
-    const handleRoleSelect = (role: string | null) => {
+    const handleRoleSelect = (role: string|null) => {
         setSelectedRole(role);
-        console.log(selectedRole)
     };
 
     return (
