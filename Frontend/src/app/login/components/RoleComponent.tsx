@@ -63,7 +63,7 @@ export const RoleComponent = ({ role, selectedRole, onRoleSelect }: RoleProps) =
                     />
                     
                     {/* Check icon displayed when role is selected */}
-                    {isSelected && <FaCheckDouble className="absolute left-6 top-6 text-rose-400" size={25} />}
+                    {isSelected && <FaCheckDouble className="absolute left-6 top-6 text-rose-400 ml-1" size={25} />}
                     
                     {/* Display the role name with dynamic styling */}
                     <h3 className={`text-3xl font-bold ${isSelected ? "text-rose-400" : "text-white"}`}>{role}</h3>

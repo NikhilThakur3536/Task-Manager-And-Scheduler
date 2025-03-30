@@ -18,13 +18,12 @@ export const RoleSelection = () => {
                 <div>
                     <h2 className="font-k2d text-6xl font-bold mt-4 mb-4">Select Your Role</h2>
                 </div>
-                <div className="z-20 h-full w-full grid grid-row-4 grid-cols-3 place-items-center gap-x-0">
+                <div className="z-20 h-full w-full grid grid-row-4 grid-cols-3 place-items-center mr-36">
                     {RolesData.map((items, index) => (
                         <RoleComponent key={index} role={items.role} onRoleSelect={handleRoleSelect} selectedRole={selectedRole} />    
                     ))}
                 </div>
             </div>
-        </div>
-        
+        </div>  
     );
 };

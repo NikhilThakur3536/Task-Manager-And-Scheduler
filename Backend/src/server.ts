@@ -6,14 +6,13 @@ import { Request, Response } from "express";
 import dotenv from "dotenv"; 
 
 dotenv.config(); // 
-
+//LN76wyo5BKaoKLdo
 const app = express();
-const mongoUrl = process.env.MONGO_URL??"";
+const mongoUrl = "mongodb+srv://new:LN76wyo5BKaoKLdo@cluster0.x0drt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 
 app.use(express.json());
-app.use(cors());
-
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
 // Connect to MongoDB
 mongoose.connect(mongoUrl)
