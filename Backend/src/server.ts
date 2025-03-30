@@ -6,9 +6,9 @@ import { Request, Response } from "express";
 import dotenv from "dotenv"; 
 
 dotenv.config(); // 
-//LN76wyo5BKaoKLdo
+
 const app = express();
-const mongoUrl = "mongodb+srv://new:LN76wyo5BKaoKLdo@cluster0.x0drt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const mongoUrl:string= process.env.MONGO_URL||"";
 
 
 app.use(express.json());

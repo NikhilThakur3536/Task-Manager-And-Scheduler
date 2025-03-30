@@ -32,7 +32,6 @@ const Layout = () => {
             </section>
             <section className="relative w-screen h-[200vh]">
                 <PricingSection/>
-
             </section>
         </div>
     );
