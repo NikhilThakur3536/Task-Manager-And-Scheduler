@@ -1,11 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { RoleComponent } from "./RoleComponent";
 import { RolesData } from "../data/RolesData";
 
+
 export const RoleSelection = () => {
     const [selectedRole, setSelectedRole] = useState<string | null>(null);
+    const [userID, setUserId] = useState<string>("");
+
+    // Get userId from localStorage
+    useEffect(() => {
+        const storedUserId = localStorage.getItem("userID");
+        if (storedUserId) {
+            setUserId(storedUserId);
+        }
+    }, []);
 
     const handleRoleSelect = (role: string|null) => {
         setSelectedRole(role);
@@ -20,7 +30,7 @@ export const RoleSelection = () => {
                 </div>
                 <div className="z-20 h-full w-full grid grid-row-4 grid-cols-3 place-items-center mr-36">
                     {RolesData.map((items, index) => (
-                        <RoleComponent key={index} role={items.role} onRoleSelect={handleRoleSelect} selectedRole={selectedRole} />    
+                        <RoleComponent key={index} role={items.role} onRoleSelect={handleRoleSelect} selectedRole={selectedRole} userID={userID}/>    
                     ))}
                 </div>
             </div>

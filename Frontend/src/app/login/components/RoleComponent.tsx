@@ -4,15 +4,17 @@ import { FaCheckDouble } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { useCallback, useRef } from "react";
 import { useFormData } from "@/app/customhooks/useFormData";
+import axios from "axios";
 
 // Define the expected props for the component
 interface RoleProps {
     role: string; // The role name
     selectedRole: string | null; // The currently selected role
     onRoleSelect: (role: string | null) => void; // Function to update selected role
+    userID:string,
 }
 
-export const RoleComponent = ({ role, selectedRole, onRoleSelect }: RoleProps) => {
+export const RoleComponent = ({ role, selectedRole, onRoleSelect, userID }: RoleProps) => {
     // Check if the role is currently selected
     const isSelected = selectedRole === role;
     
@@ -23,7 +25,7 @@ export const RoleComponent = ({ role, selectedRole, onRoleSelect }: RoleProps) =
     const prevDataRef = useRef(data);
 
     // Function to handle role selection
-    const handleRoleSelection = useCallback(() => {
+    const handleRoleSelection = useCallback(async() => {
         const newRole = isSelected ? "" : role; // Toggle selection
         console.log("Role being set:", newRole); // Log the new role selection
 
@@ -32,6 +34,19 @@ export const RoleComponent = ({ role, selectedRole, onRoleSelect }: RoleProps) =
         
         // Update form state
         dataHandler({ target: { name: "role", value: newRole } } as React.ChangeEvent<HTMLInputElement>);
+
+        try{
+            const response= await axios.post("http://localhost:3001/auth/roles",{
+              userID:userID,
+              role:newRole,
+            })
+            
+            if(response){
+                console.log(response.data)
+            }
+        }catch{
+
+        }
 
         // Log data changes only if they occur
         if (prevDataRef.current !== data) {

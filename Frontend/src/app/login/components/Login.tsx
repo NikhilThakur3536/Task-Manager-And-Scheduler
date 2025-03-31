@@ -1,4 +1,4 @@
-
+"use client"
 
 import { InputFields } from "../ui/InputFields";
 import { InputFieldsData } from "../data/data";
@@ -30,12 +30,12 @@ export const Login= ({onSubmit}:submition) => {
 
         try {
             
-            const response = await axios.post("http://localhost:3001/auth/signUp", {
+            const response = await axios.post("http://localhost:3001/auth/signup", {
                 email: data.email,
                 username: data.username,
                 password: data.password,
             });
-        
+            localStorage.setItem("userID", response.data.userID);
             console.log("Login successful:", response.data);
             onSubmit(true); 
         } catch (err: any) {
