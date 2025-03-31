@@ -8,8 +8,8 @@ export const signUp = async (req: Request, res: Response): Promise<void> => {
         const { email, username, password, role } = req.body;
 
         if (!email || !username || !password) {
-            res.status(403).json({ message: "Enter the user credentials" });
-            return; // ✅ Ensure function stops execution
+            res.status(403).json({ message: "Enter the user credentials" }); 
+            console.log("Enter the user credentials")
         }
 
         const hashpass = await crypt.hash(password, 10);

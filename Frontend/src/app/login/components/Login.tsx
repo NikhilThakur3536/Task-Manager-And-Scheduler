@@ -4,6 +4,7 @@ import { InputFields } from "../ui/InputFields";
 import { InputFieldsData } from "../data/data";
 import { useFormData } from "@/app/customhooks/useFormData";
 import { useState } from "react";
+import axios from 'axios';
 
 type submition={
     onSubmit:(value: boolean) => void;
@@ -24,34 +25,22 @@ export const Login= ({onSubmit}:submition) => {
             setError("Please fill in all fields.");
             return;
         }
-
         setLoading(true);
         setError(null);
 
         try {
-            console.log(data.email);
-            const response = await fetch("http://localhost:3001/auth/signUp", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    email: data.email,
-                    username: data.username,
-                    password: data.password,
-                }),
-            });
-
-            const result = await response.json();
             
-            if (!response.ok) {
-                throw new Error(result.message || "Login failed");
-            }
-
-            console.log("Login successful:", result);
-            onSubmit(true); // Navigate to the next step
+            const response = await axios.post("http://localhost:3001/auth/signUp", {
+                email: data.email,
+                username: data.username,
+                password: data.password,
+            });
+        
+            console.log("Login successful:", response.data);
+            onSubmit(true); 
         } catch (err: any) {
-            setError(err.message);
+            setError(err.response?.data?.message || "Login failed");
+            console.log(error)
         } finally {
             setLoading(false);
         }
