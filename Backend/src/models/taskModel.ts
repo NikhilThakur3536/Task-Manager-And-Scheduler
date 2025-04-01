@@ -1,4 +1,5 @@
 import mongoose, {Schema} from "mongoose";
+import { rule } from "postcss";
 
 //Tasks Model Schema
 const  TasksSchema = new Schema({
@@ -12,9 +13,14 @@ const  TasksSchema = new Schema({
         type:Date,
         require:true,
     },
-    Details:
+    Description:
     {
         type:String,
+        require:true,
+    },
+    Priority:
+    {
+      type:String,  
     }
 })
 

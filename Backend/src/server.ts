@@ -3,9 +3,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import authroutes from "./routes/authRoutes";
 import { Request, Response } from "express";
-import dotenv from "dotenv"; 
-
-dotenv.config(); // 
+import "dotenv/config";
 
 const app = express();
 const mongoUrl:string= process.env.MONGO_URL||"";
