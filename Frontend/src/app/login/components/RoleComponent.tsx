@@ -6,9 +6,9 @@ import { useCallback, useRef } from "react";
 import { useFormData } from "@/app/customhooks/useFormData";
 import axios from "axios";
 
-// Define the expected props for the component
+
 interface RoleProps {
-    role: string; // The role name
+    role: string; 
     selectedRole: string | null; // The currently selected role
     onRoleSelect: (role: string | null) => void; // Function to update selected role
     userID:string,

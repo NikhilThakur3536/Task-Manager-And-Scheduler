@@ -3,6 +3,11 @@ import { rule } from "postcss";
 
 //Tasks Model Schema
 const  TasksSchema = new Schema({
+    userID:{
+        type: mongoose.Schema.Types.ObjectId,
+         ref: 'User', 
+         required: true,
+    },
     Task:
     {
         type:String,

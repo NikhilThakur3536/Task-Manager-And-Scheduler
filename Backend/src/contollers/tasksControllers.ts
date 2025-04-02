@@ -1,13 +1,22 @@
 import { Request, Response } from "express";
 import { Tasks } from "../models/taskModel";
-import { endianness } from "node:os";
-import { responseEncoding } from "axios";
+import { authReq } from "../middleware/authMiddleware";
 
-export const newTask= async ( req:Request,res:Response )=>{
-
+export const newTask= async ( req:authReq,res:Response )=>{
+    const userID=req.user||{};
     const {Task,EndDate,Description,Priority}= req.body;
-    if(!Task || !EndDate || !Description ){
-        res.status(403).json({ message: "Enter the user credentials" });
+    
+    try{
+        if(!Task || !EndDate || !Description || !Priority ){
+            res.status(403).json({ message: "Enter the user credentials" });
+            return;
+        }
+        const newTask = await Tasks.create({userID:userID,Task:Task,EndDate:EndDate,Description:Description,Priority:Priority})
+        res.status(201).json({message:"New Task Creater"});
+    }catch(err){
+        console.log("error",err);
+        res.status(500).json({message:"Somethign bad happened",err});
     }
+
 
 }

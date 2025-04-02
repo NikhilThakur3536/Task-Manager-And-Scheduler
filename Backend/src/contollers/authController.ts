@@ -21,7 +21,6 @@ export const signUp = async (req: Request, res: Response) => {
         const user = await User.create({ email, username, password: hashpass, role });
 
         res.status(201).json({ message: "User signed up successfully", userID: user._id });
-        await user.save();
         return;
     } catch (error) {
         console.error("Signup error:", error);
@@ -86,4 +85,4 @@ export const updateRoles = async (req:authReq, res: Response) => {
        res.status(500).json({ message: "Failed to update user role", error: error.message });
        return;
     }
-  };
+};
