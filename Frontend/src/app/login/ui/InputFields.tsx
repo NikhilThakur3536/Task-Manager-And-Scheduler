@@ -1,6 +1,7 @@
 "use client"
 
 import { InputFieldsProps } from "../data/data"
+import { CgAdd } from "react-icons/cg";
 
 type InputProps = InputFieldsProps & {
     value: string;
@@ -9,9 +10,10 @@ type InputProps = InputFieldsProps & {
 
 export const InputFields= ({label,placeholder,name,type,value,onChange}:InputProps) =>{
     return(
-        <div className="w-[794px] flex flex-col item-center">
-            <h3 className="font-k2d  font-bold text-2xl mb-2 mt-4 transform translate-x-14">{label}</h3>
-            <input className=" w-[700px] h-[72px] bg-[#C5C5C5] rounded-2xl border border-black text-white text-xl pl-8 transform translate-x-14 placeholder:pl-4 placeholder:text-xl placeholder:text-white" type={type} name={name} placeholder={placeholder} onChange={onChange} value={value}/>
-        </div>
+        <div className="mb-2 w-[80%]">
+      <label className="block w-full h-8 mb-1 text-xl text-white">{label}</label>
+      <input type={type} placeholder={placeholder} name={name} value={value} onChange={onChange} className="focus:outline-none bg-slate-300/20 text-white border border-white/20 rounded-2xl w-full h-10 pl-8 placeholder:ml-8 relative"  />
+      <CgAdd className="text-white/50 absolute   transform -translate-y-[29px] translate-x-2" size={20} />
+    </div>
     )
 }

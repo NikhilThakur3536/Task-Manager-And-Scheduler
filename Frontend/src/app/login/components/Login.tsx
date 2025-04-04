@@ -48,15 +48,36 @@ export const Login= ({onSubmit}:submition) => {
 
 
     return(
-        <div className="flex justify-center items-center bg-black w-screen h-screen">
-            <div className="z-10 absolute inset-0 w-full h-full bg-[radial-gradient(circle,_#9ca3af_1px,_transparent_1px)] bg-[size:14px_14px] opacity-30"></div>        
-            <div className="z-20 flex flex-col items-center w-[80%] h-[90%] bg-white rounded-2xl">
-                <div>
-                    <h2 className="font-k2d text-6xl font-bold mt-4 mb-4">LOGIN</h2>
-                </div>
-                {InputFieldsData.map((items,index)=>(<InputFields key={index} {...items} value={data[items.name]||""} onChange={dataHandler}/>))}
-                <button className=" w-[600px] h-[72px] bg-[#4F27FF] rounded-2xl border border-black text-white font-k2d text-5xl text-bold pl-8 mt-8 transform translate-x-2" onClick={handleSignup}>Select Role</button>
-            </div>
+        <div className="bg-[#101010] w-screen h-screen flex flex-col items-center">
+        <h1 className="w-[60%] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent h-24 font-bold text-5xl text-center p-4">Task Manager & Scheduler</h1>
+        <h3 className="font-semibold text-xl text-white/30 w-[60%] h-12 -mt-4 text-center">Streamline your productivity with modern task management</h3>
+        <div className="w-[30%] h-[80%] bg-black/20 border border-gray-50/20  rounded-2xl p-2 flex flex-col items-center mb-4">
+          <h2 className=" bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text font-bold text-3xl mt-2">Task Manager & Scheduler</h2>
+          <h3 className="text-white mb-8">Manage tasks, schedules, and boost your productivity</h3>
+          <form className="w-full flex flex-col items-center">
+            {InputFieldsData.map((items, index) => (<InputFields key={index} {...items} value={data[items.name]||""} onChange={dataHandler}/>))}
+          </form>
+          <hr className="w-[80%] h-1 text-white/30 mt-2 mb-2" />
+          <button className="w-[80%] h-12 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-xl text-center text-white font-bold text-2xl" onClick={handleSignup}>Sign UP</button>
         </div>
+      </div>
     )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
